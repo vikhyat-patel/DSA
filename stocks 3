@@ -1,0 +1,55 @@
+class Solution {
+public:
+int helper(int idx, int n, int buy, vector<int> &nums, int caps, vector<vector<vector<int>>> &dp){
+    if(idx==n)
+    return 0;
+    if(caps==0)
+    return 0;
+    if(dp[idx][buy][caps]!=-1)
+    return dp[idx][buy][caps];
+    if(buy){
+       return dp[idx][buy][caps]=max((-nums[idx]+helper(idx+1,n,0,nums,caps,dp)),0+helper(idx+1,n,1,nums,caps,dp));
+    }
+    else{
+       return dp[idx][buy][caps]=max((nums[idx]+helper(idx+1,n,1,nums,caps-1,dp)),0+helper(idx+1,n,0,nums,caps,dp));
+    }
+}
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        vector<vector<vector<int>>> dp(n, vector<vector<int>>(2, vector<int>(3,-1)));  //size - n*2*3
+        int caps=2;
+        int buy=1;
+        return helper(0,n,buy,prices,caps,dp);
+    }
+};
+
+/* Memoization dp O(N) & O(N)  */
+
+
+int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int dp[n+1][2][3];
+        for(int i=0;i<2;i++){         // BASE CASE
+            for(int j=0;j<3;j++)
+            dp[n][i][j]=0;
+        }
+         for(int i=0;i<=n;i++){       // BASE CASE
+             for(int j=0;j<2;j++)
+             dp[i][j][0]=0;
+         }
+         for(int idx=n-1;idx>=0;idx--){
+             for(int buy=0;buy<=1;buy++){
+                 for(int caps=1;caps<=2;caps++){
+                     if(buy){
+        dp[idx][buy][caps]=max((-prices[idx]+dp[idx+1][0][caps]),0+dp[idx+1][1][caps]);
+    }
+    else{
+        dp[idx][buy][caps]=max((prices[idx]+dp[idx+1][1][caps-1]),0+dp[idx+1][0][caps]);
+    }
+                 }
+             }
+         }
+         return dp[0][1][2];
+    }
+
+/* TABULATION dp O(N) & O(N)  */
