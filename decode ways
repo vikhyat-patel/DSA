@@ -1,0 +1,23 @@
+int mod = 1e9+7;
+int helper(int index, string &s, vector<int> &dp){
+    if(index==1||index==0)
+    return 1;
+    if(dp[index]!=-1)
+    return dp[index];
+    int count=0;
+    if(s[index-1]>='1')
+     count=helper(index-1,s,dp)%mod;
+    if(s[index-2]=='1'||(s[index-2]=='2'&&s[index-1]<='6'))
+     count=(count+helper(index-2,s,dp)%mod)%mod;
+     return dp[index]=count%mod;
+    
+}	
+		int CountWays(string str){
+		  int n=str.size();
+		  vector<int> dp(n+1,-1);
+		  if(str[0]=='0')
+		  return 0;
+		  return helper(n,str,dp);
+		}
+    
+    // O(N) & O(N) , memoization dp
