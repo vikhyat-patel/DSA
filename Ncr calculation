@@ -1,0 +1,60 @@
+class Solution{
+public:
+int mod=1e9+7;
+/*
+int recursive(int n, int k){
+    if(k==0||k==n)
+    return 1;
+    return binomial(n-1,k-1)+binomial(n-1,k);
+}
+*/    // RECURSIVE -> O(EXPONENTIAL)
+
+/*
+int memo(int n, int k, vector<vector<int>> &dp){
+    if(k==0)
+    return dp[n][k]=1;
+    if(k==n)
+    return dp[n][k]=1;
+    if(dp[n][k]!=-1)
+    return dp[n][k];
+    return dp[n][k]=((memo(n-1,k-1,dp)%mod)+(memo(n-1,k,dp)%mod))%mod;
+}
+*/    // MEMO -> O(n*k) & O(n*k)
+
+/*
+    int Tabulation(int n, int r){
+        if(r>n)
+        return 0;
+                    // vector<vector<int>> dp(n+1,vector<int>(r+1,-1));
+                    // return memo(n,r,dp);
+        int k=r;
+        int dp[n+1][k+1];
+        for(int i=0;i<=n;i++){
+            for(int j=0;j<=k;j++){
+                if(j==i||j==0)
+                dp[i][j]=1;
+                else
+                dp[i][j]=((dp[i-1][j-1]%mod)+(dp[i-1][j]%mod))%mod;
+            }
+        }
+        return dp[n][k]%mod;
+    }
+*/      // TABU-> O(n*k) & O(n*k)
+
+
+////////////// MOST EFFICIENT SOLN --> 
+int helper(int n, int k){
+   int res=1;
+   for(int i=0;i<k;i++){
+     res=res*(n-i);
+     res=res/(i+1);
+   }
+   return res;
+}
+    int nCr(int n, int k){
+       if(k>n)
+       return 0;
+       return helper(n,k);
+    }
+                            // TIME --> O(K) & O(1)
+};
