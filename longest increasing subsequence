@@ -1,0 +1,56 @@
+// RECURRSION SOLUTION --> O(Exponential)
+
+class Solution {
+public:
+int helper(int ind, int prev_ind, vector<int> &nums){
+    if(ind==nums.size())
+    return 0;
+    int len = 0 + helper(ind+1,prev_ind,nums);    // not take
+    if(prev_ind==-1||nums[ind]>nums[prev_ind])
+    len = max(len, 1 + helper(ind+1,ind,nums));   // take
+    return len;
+}
+    int lengthOfLIS(vector<int>& nums) {
+        return helper(0,-1,nums);
+    }
+};
+
+
+// MEMOIZATION --> O(N^2) & O(N^2) -- VERY VERY SLOW..
+
+class Solution {
+public:
+int helper(int ind, int prev_ind, vector<int> &nums, vector<vector<int>> &dp){
+    if(ind==nums.size())
+    return 0;
+    if(dp[ind][prev_ind+1]!=-1)
+    return dp[ind][prev_ind+1];
+    int len = 0 + helper(ind+1,prev_ind,nums,dp);    // not take
+    if(prev_ind==-1||nums[ind]>nums[prev_ind])
+    len = max(len, 1 + helper(ind+1,ind,nums,dp));   // take
+    return dp[ind][prev_ind+1] = len;
+}
+    int lengthOfLIS(vector<int>& nums) {
+        int n=nums.size();
+        vector<vector<int>> dp(n+1,vector<int>(n+1,-1));
+        return helper(0,-1,nums,dp);
+    }
+};
+
+
+// Most Efficient --> BINARY SEARCH --> O(N*logN) & O(N)
+
+int longestSubsequence(int n, int a[]){
+    vector<int> temp;
+    temp.push_back(a[0]);
+    for(int i=1;i<n;i++){
+        if(a[i]>temp.back()){
+        temp.push_back(a[i]);
+        }
+        else{
+        int index=lower_bound(temp.begin(),temp.end(),a[i])-temp.begin();  
+        temp[index]=a[i];
+        }
+    }
+    return temp.size();
+}
