@@ -1,0 +1,24 @@
+class Solution
+{
+  public:
+ bool identical(Node* x, Node* y){
+    if(x==NULL&&y==NULL)
+    return true;
+    if(x==NULL||y==NULL)
+    return false;
+    if(x->data!=y->data)
+    return false;
+    return identical(x->left,y->left)&&identical(x->right,y->right);
+    } 
+    //Function to check if S is a subtree of tree T.
+    bool isSubTree(Node* T, Node* S) 
+    {
+      if(S==NULL)
+      return true;
+      if(T==NULL)
+      return false;
+      if(identical(T,S))
+      return true;
+      return isSubTree(T->left,S)||isSubTree(T->right,S);
+    }
+};
