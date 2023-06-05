@@ -1,3 +1,5 @@
+Very beautiful solution --> O(N*sqrtN) & O(N)
+
 class Solution {
 public:
     int numSquares(int n) {
