@@ -1,0 +1,51 @@
+//  O(N) Time complexity & O(w)...we have used BFS to find the distance between the lca and both the nodes..
+
+class Solution{
+    public:
+Node* lca(Node* root, int a, int b){
+        if(root==NULL||root->data==a||root->data==b)
+        return root;
+        Node* left =  lca(root->left,a,b);
+        Node* right = lca(root->right,a,b);
+        if(left==NULL)
+        return right;
+        else if(right==NULL)
+        return left;
+        else
+        return root;
+    }
+int distance(Node* root, int x){
+       if (root == NULL) 
+        return -1;
+        
+    queue<Node*> q;
+    q.push(root);
+    int dist = 0;
+    while (!q.empty()) {
+        int size = q.size();
+        for (int i = 0; i < size; i++) {
+            Node* curr = q.front();
+            q.pop();
+            if (curr->data == x) {
+                return dist;
+            }
+            if (curr->left) {
+                q.push(curr->left);
+            }
+            if (curr->right) {
+                q.push(curr->right);
+            }
+        }
+        dist++;
+    }
+    return -1;
+    }
+    /* Should return minimum distance between a and b
+    in a tree with given root*/
+    int findDist(Node* root, int a, int b) {
+       Node* temp = lca(root,a,b);
+       int d1 = distance(temp,a);
+       int d2 = distance(temp,b);
+       return d1+d2;
+    }
+};
