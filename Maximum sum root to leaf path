@@ -1,0 +1,16 @@
+class Solution{
+    public:
+int helper(Node* root){
+    if(root->left==NULL&&root->right==NULL)
+    return root->data;
+    if(root->left==NULL)
+    return root->data + helper(root->right);
+    if(root->right==NULL)
+    return root->data + helper(root->left);
+    return root->data + max(helper(root->left),helper(root->right));
+}
+    int maxPathSum(Node* root)
+    {
+        return helper(root);
+    }
+};
