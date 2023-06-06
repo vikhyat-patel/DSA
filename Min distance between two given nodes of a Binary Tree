@@ -49,3 +49,24 @@ int distance(Node* root, int x){
        return d1+d2;
     }
 };
+
+// Alternatively we can use the DFS also to find the distance between the lca and both the nodes..
+
+int distance(Node* root, int x)
+{
+    // Base case
+    if (root == NULL)
+    return -1;
+ 
+    // Initialize distance
+    int dist = -1;
+ 
+    // Check if x is present at root or in left
+    // subtree or right subtree.
+    if ((root->data == x) ||
+        (dist = distance(root->left, x)) >= 0 ||
+        (dist = distance(root->right, x)) >= 0)
+        return dist + 1;
+ 
+    return dist;
+}
