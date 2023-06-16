@@ -1,0 +1,21 @@
+class Solution
+{
+    public:
+    //Function to rotate a linked list.
+    Node* rotate(Node* head, int k)
+    {
+       Node* curr = head;
+       for(int i=1;i<k;i++)
+       curr = curr->next;
+       if(curr->next==NULL)
+       return head;                       // it means k is equal to n
+       Node* start = curr->next;
+       curr->next = NULL;                // curr will be our last element
+       Node* temp = start;
+       while(temp->next!=NULL)
+       temp = temp->next;
+       temp->next = head;
+       return start;
+    }
+};
+    
