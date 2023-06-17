@@ -1,0 +1,33 @@
+//  O(N*N*M) & Recursive space used....Recursively call to merge the current linked list with the next linked list...
+.....merging the linked lists, starting from the last linked list.
+
+Node* merge(Node* h1, Node* h2){
+    Node* result = NULL; 
+    
+    /* Base cases */
+    if (h1 == NULL) 
+        return h2; 
+    else if (h2 == NULL) 
+        return h1; 
+    
+    /* Pick either h1 or h2, and recur */
+    if (h1->data <= h2->data) 
+    { 
+        result = h1; 
+        result->bottom = merge(h1->bottom, h2); 
+    } 
+    else
+    { 
+        result = h2; 
+        result->bottom = merge(h1, h2->bottom); 
+    } 
+    return result; 
+}
+/*  Function which returns the  root of 
+    the flattened linked list. */
+Node *flatten(Node *root)
+{
+   if(root==NULL||root->next==NULL)
+   return root;
+   return merge(root, flatten(root->next));
+}
