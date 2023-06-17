@@ -1,4 +1,4 @@
-class Solution                   // O(N) & O(N) Soln..
+class Solution                   // O(NlogN) & O(N) Soln..
 {
 private:
 Node* inorder(Node* root, int target){
