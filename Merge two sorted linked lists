@@ -1,0 +1,64 @@
+Node* SortedMerge(Node* a, Node* b)          // O(M+N) TIME & O(M+N) recursive space...we are creating a New list.
+{ 
+    Node* result = NULL; 
+    
+    /* Base cases */
+    if (a == NULL) 
+        return(b); 
+    else if (b == NULL) 
+        return(a); 
+    
+    /* Pick either a or b, and recur */
+    if (a->data <= b->data) 
+    { 
+        result = a; 
+        result->next = SortedMerge(a->next, b); 
+    } 
+    else
+    { 
+        result = b; 
+        result->next = SortedMerge(a, b->next); 
+    } 
+    return(result); 
+} 
+
+
+
+//Function to merge two sorted linked list.         //  O(M+N) Time & 0(1) Space..but we are creating a new list.
+Node* sortedMerge(Node* head1, Node* head2)  
+{  
+    //creating a start first node to hang the result on.
+     Node *start = new Node(0); 
+  
+    //a pointer, end is used to store the resultant list after merging.
+     Node *end = start;  
+
+    while (true) {  
+        //if either list runs out, we store all the nodes 
+        //of other list in link part of tail node.
+        if (head1 == NULL) {  
+            end->next = head2;  
+            break;  
+        }  
+        else if (head2 == NULL) {  
+            end->next = head1;  
+            break;  
+        }
+        //comparing the data of the two lists and storing the node with smaller
+        //data in link part of the tail node.
+        if (head1->data <= head2->data){
+            end->next = head1;
+            //if data in first list is smaller, we move to the next node in it.
+            head1 = head1->next;
+        }
+        else{
+            end->next = head2;
+            //if data in second list is smaller, we move to the next node in it.
+            head2 = head2->next;
+        }
+        //moving to the next node.
+        end = end->next;  
+    }
+    //returning the merged list attached to start.
+    return start->next;  
+}  
