@@ -1,0 +1,45 @@
+class Solution     // O(M+N) & O(M+N) SOLN...               
+{
+public:
+void merge(vector<int> x, vector<int> y, vector<int> &res){
+    int n1=x.size();
+    int n2=y.size();
+    int i=0,j=0;
+    while(i<n1&&j<n2){
+      if(x[i]>y[j]){
+      res.push_back(y[j]);
+      j++;
+      }
+      else{
+        res.push_back(x[i]);
+        i++;
+      }
+    }
+    while(i<n1)
+    res.push_back(x[i++]);
+    while(j<n2)
+    res.push_back(y[j++]);
+} 
+
+void inorder(Node* root, vector<int> &v){
+        if(root==NULL)
+        return;
+        inorder(root->left,v);
+        v.push_back(root->data);
+        inorder(root->right,v);
+    }
+
+
+    //Function to return a list of integers denoting the node 
+    //values of both the BST in a sorted order.
+    vector<int> merge(Node *root1, Node *root2)
+    {
+      vector<int> x;
+      vector<int> y;
+      inorder(root1,x);
+      inorder(root2,y);
+      vector<int> res;
+      merge(x,y,res);
+      return res;
+    }
+};
