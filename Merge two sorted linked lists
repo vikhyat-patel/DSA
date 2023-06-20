@@ -91,3 +91,30 @@ Node* sortedMerge(Node* head1, Node* head2)
    Node* mergedhead = merge(head1,head2);
    return mergedhead;
 }  
+
+.....................................................................
+//Function to merge K sorted linked list.    //  O(nk Logk) & O(k)
+    Node* mergeKLists(Node* arr[], int K)
+    {
+        int N = K;
+        int last=N-1; 
+    	while (last != 0)
+    	{
+    		int i = 0, j = last;
+    		while (i < j)
+    		{
+    			//calling SortedMerge function to merge two different list into
+    			//one list which has sorted elements.
+    			arr[i] = SortedMerge(arr[i], arr[j]);
+    
+    			//going for the next pair of lists.
+    			i++, j--;
+    
+    			//if all pairs are merged, we update the last.
+    			if (i >= j)
+    				last = j;
+    		}
+    	}
+        //returning the merged list.
+    	return arr[0];
+    }
