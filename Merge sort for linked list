@@ -1,0 +1,57 @@
+                                   /////   O(N*logN) & O(N) SOLN...
+
+class Solution{
+  public:
+Node* merge(Node* a, Node* b){
+    Node* result = NULL; 
+    
+    /* Base cases */
+    if (a == NULL) 
+        return(b); 
+    else if (b == NULL) 
+        return(a); 
+    
+    /* Pick either a or b, and recur */
+    if (a->data <= b->data) 
+    { 
+        result = a; 
+        result->next = merge(a->next, b); 
+    } 
+    else
+    { 
+        result = b; 
+        result->next = merge(a, b->next); 
+    } 
+    return(result); 
+}
+
+Node* getmid(Node* head){
+       Node* slow=head;
+       Node* fast=head->next;
+       
+       while(fast!=NULL && fast->next!=NULL){
+           slow=slow->next;
+           fast=fast->next->next;
+       }
+       return slow;
+   }   
+ 
+    //Function to sort the given linked list using Merge Sort.
+    Node* mergeSort(Node* head) {
+          // base case
+          if(head==NULL || head->next==NULL)
+          return head;
+          
+        Node* mid = getmid(head);
+        Node* left = head;
+        Node* right = mid->next;
+        mid->next = NULL;
+        
+        // recursive sort
+        left =  mergeSort(left);
+        right = mergeSort(right);
+        
+        // merge two lists
+        return merge(left,right);
+    }
+};
