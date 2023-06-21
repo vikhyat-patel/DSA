@@ -1,4 +1,4 @@
-// O(V+E) & O(V) SOLN...
+// O(V+E) & O(V) SOLN...BFS
 
 bool detectcycle(int src, vector<int> adj[], vector<bool> &vis){
     vis[src] = true;
