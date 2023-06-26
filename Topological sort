@@ -1,0 +1,29 @@
+Class Solution    // simple dfs & storing in a stack..finally pulling out elements & printing them...//..O(V+E) & O(V)..//
+{
+private:
+void dfs(int idx, vector<bool> &vis, vector<int> adj[], stack<int> &st){
+    vis[idx] = true;
+    for(auto it : adj[idx]){
+        if(!vis[it])
+        dfs(it,vis,adj,st);
+    }
+    st.push(idx);
+}
+	public:
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	   vector<int> ans;
+	   stack<int> st;
+	   vector<bool> vis(V, false);
+	   for(int i=0;i<V;i++){
+	       if(!vis[i])
+	       dfs(i,vis,adj,st);
+	   }
+	   while(!st.empty()){
+	       ans.push_back(st.top());
+	       st.pop();
+	   }
+	   return ans;
+	}
+};
