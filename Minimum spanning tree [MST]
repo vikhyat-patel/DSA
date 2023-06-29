@@ -1,0 +1,39 @@
+//Function to find sum of weights of edges of the Minimum Spanning Tree [MST]---> PRIM'S Algorithm..O(ElogV) & O(V^2)..
+//We can either use SET or create PRIORITY_QUEUE (MIN Heap)..
+
+    int spanningTree(int V, vector<vector<int>> adj[])
+    {
+       // set<pair<int,int>> st;
+       priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+       //st.insert({0,0});
+       pq.push({0,0});
+       int sum = 0;
+       vector<int> vis(V,false);
+       while(!pq.empty()){
+           //auto it = st.begin();
+           auto it = pq.top();
+           int wt = it.first;
+           int node = it.second;
+           //st.erase(it);
+           pq.pop();
+           if(vis[node]==1)
+           continue;
+           else if(!vis[node]){
+               vis[node] = true;
+               sum += wt;
+           }
+           for(auto i : adj[node]){
+              int adjnode = i[0];
+              int dist = i[1];
+              if(!vis[adjnode])
+              pq.push({dist,adjnode});
+           }
+       }
+       return sum;
+    }
+
+
+// KRUSKAL'S ALGORITHM...Disjoint SET/ Union by rank/ Union by size/ Path compression...VERY VERY IMP...
+
+
+
