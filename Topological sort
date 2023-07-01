@@ -1,6 +1,5 @@
-Class Solution    // simple dfs & storing in a stack..finally pulling out elements & printing them...//..O(V+E) & O(V)..//
-{
-private:
+ // simple DFS & storing in a STACK..finally pulling out elements & printing them...//..O(V+E) & O(V)..//
+
 void dfs(int idx, vector<bool> &vis, vector<int> adj[], stack<int> &st){
     vis[idx] = true;
     for(auto it : adj[idx]){
@@ -9,7 +8,7 @@ void dfs(int idx, vector<bool> &vis, vector<int> adj[], stack<int> &st){
     }
     st.push(idx);
 }
-	public:
+	
 	//Function to return list containing vertices in Topological order. 
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
@@ -26,4 +25,34 @@ void dfs(int idx, vector<bool> &vis, vector<int> adj[], stack<int> &st){
 	   }
 	   return ans;
 	}
-};
+
+// simple BFS using the QUEUE & Indegree CONCEPT...// O(V+E) & O(V)...//  ..."KAHN'S ALGORITHM"....
+1. put all the nodes with indegree zero in the queue.
+2. now take out the nodes from queue, move to their adjacent nodes, reduce their indegree, if it equals zero then push the node in queue.
+
+//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	   vector<int> indegree(V, 0);
+	   for(int i=0;i<V;i++){
+	       for(auto it : adj[i])
+	       indegree[it]++;
+	   }
+	   queue<int> q;
+	   for(int i=0;i<V;i++){
+	       if(indegree[i]==0)
+	       q.push(i);
+	   }
+	   vector<int> topo;
+	   while(!q.empty()){
+	       int node = q.front();
+	       q.pop();
+	       topo.push_back(node);
+	       for(auto it : adj[node]){
+	          indegree[it]--;
+	          if(indegree[it]==0)
+	          q.push(it);
+	       }
+	   }
+	   return topo;
+	}
