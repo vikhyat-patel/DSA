@@ -1,3 +1,54 @@
-// find no of SCC, or print the SCC...O(V+E)..& O(V+E)..
+// find no of SCC, or print the SCC...O(V+E)..& O(V+E)...3 STEPS SOLUTION..
 
+1. sort all the nodes in order of the finishing time in a stack using the DFS. Top element in stack finishes last. (dfs)
+2. Reverse the graph and store it in a new adjacency list.
+3. Now, use the DFS using the stack with the new adjacency list & count the total SCC. (dfs1)
 
+class Solution
+{
+private:    
+void dfs(int start, vector<bool> &vis, vector<vector<int>> &adj, stack<int> &st){
+    vis[start] = true;
+    for(auto it : adj[start]){
+        if(!vis[it])
+        dfs(it,vis,adj,st);
+    }
+    st.push(start);
+}
+private:
+void dfs1(int start, vector<bool> &vis, vector<int> Tadj[]){
+    vis[start] = true;
+    for(auto it : Tadj[start]){
+        if(!vis[it])
+        dfs1(it,vis,Tadj);
+    }
+}
+	public:
+	//Function to find number of strongly connected components in the graph.
+    int kosaraju(int V, vector<vector<int>>& adj)
+    {
+       vector<bool> vis(V, false);
+       stack<int> st;
+       for(int i=0;i<V;i++){
+           if(!vis[i])
+           dfs(i,vis,adj,st);
+       }
+       vector<int> Tadj[V];
+       for(int i=0;i<V;i++){
+           vis[i] = false;   // to use in the next step..
+       for(auto it : adj[i]){
+          Tadj[it].push_back(i); 
+       }
+    }
+    int scc = 0;
+    while(!st.empty()){
+        int node = st.top();
+        st.pop();
+        if(!vis[node]){
+            scc++;
+            dfs1(node,vis,Tadj);
+        }
+    }
+    return scc;
+    }
+};
