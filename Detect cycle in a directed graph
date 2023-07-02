@@ -22,8 +22,10 @@ bool detectcycle(int src, vector<int> adj[], vector<bool> &vis, vector<bool> &pa
        vector<bool> vis(V, false);
        vector<bool> pathvis(V, false);
        for(int i=0;i<V;i++){
+           if(!vis[i]){
            if(detectcycle(i,adj,vis,pathvis))
            return true;
+           }
        }
        return false;
     }
