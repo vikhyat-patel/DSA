@@ -24,3 +24,36 @@ int isNegativeWeightCycle(int n, vector<vector<int>>edges){
 	    }
 	    return 0;
 	}
+
+
+BELLMAN FORD TIME COMPLEXITY - O(V*E) & O(V)...
+
+
+   //  Function to implement Bellman Ford...
+    *   edges: vector of vectors which represents the graph
+    *   S: source vertex to start traversing graph with
+    *   V: number of vertices
+
+    vector<int> bellman_ford(int V, vector<vector<int>>& edges, int S) {
+       vector<int> bellman(V, 1e8);
+       bellman[S] = 0;
+       for(int i=1;i<V;i++){
+           for(auto it : edges){
+              int u = it[0];
+              int v = it[1];
+              int wt = it[2];
+              if(bellman[u]!=1e8 && (wt + bellman[u])<bellman[v]){
+                  bellman[v] = wt + bellman[u];
+              }
+           }
+       }
+       for(auto it : edges){
+              int u = it[0];
+              int v = it[1];
+              int wt = it[2];
+              if(bellman[u]!=1e8 && (wt + bellman[u])<bellman[v]){
+                  return {-1};   // Negative cycle..
+            }
+       }
+       return bellman;
+    }
