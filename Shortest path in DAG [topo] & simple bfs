@@ -1,0 +1,50 @@
+                     // O(N+M) & O(N)...//...
+1. Here we have used the toposort and then with the simple bfs [relaxation of edges]..
+2. we can definately use the Dijkstra but the time complexity will be more. Dijkstra is necessary on graphs with cycle/undirected ones.
+3. toposort can't be used in the undirected graphs & cyclic graphs. In DAG toposort helps us to reduce the time complexity.
+4. Intuition is very clear toposort contain the nodes with precendents already computed, that makes us easy to find the shortest distance of the current node.
+
+
+void topo(int node, vector<pair<int,int>> adj[], vector<int> &vis, stack<int> &st){
+    vis[node] = 1;
+    for(auto it : adj[node]){
+        if(!vis[it.first])
+        topo(it.first,adj,vis,st);
+    }
+    st.push(node);
+}
+
+
+     vector<int> shortestPath(int n,int m, vector<vector<int>>& edges){
+        stack<int> st;
+        vector<int> vis(n, 0);
+        vector<pair<int,int>> adj[n];
+        for(auto it : edges){
+            int u = it[0];
+            int v = it[1];
+            int wt = it[2];
+            adj[u].push_back({v,wt});
+        }
+        for(int i=0;i<n;i++){
+            if(!vis[i])
+            topo(i,adj,vis,st);
+        }
+        vector<int> dist(n, 1e9);
+        dist[0] = 0;
+        while(!st.empty()){
+           int node = st.top();
+           st.pop();
+           for(auto it : adj[node]){
+               int v = it.first;
+               int wt = it.second;
+               if((wt + dist[node]) < dist[v]){
+                   dist[v] = wt + dist[node];
+               }
+           }
+        }
+        for(int i=0;i<n;i++){
+            if(dist[i]==1e9)
+            dist[i] = -1;
+        }
+        return dist;
+    }
