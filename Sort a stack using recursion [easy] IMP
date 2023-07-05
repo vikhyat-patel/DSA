@@ -1,0 +1,58 @@
+We can do this stuff pretty easily if we were allowed extra space of O{N), maybe using priority_queue..
+
+Time Complexity: O(n^2)  Space Complexity: O(n) for the auxiliary space stack.
+
+Algorithm ->
+While the stack is not empty 
+Int top = stack top();
+Stack pop();
+sortStack(); // keep on poping the elements until the stack is empty
+sortedInsert( top ); // when the stack is now empty or sorted already inserted in sorted order
+SortedInsert() // sorted insert function
+If the stack is empty or the stack top < current element
+Stack push (current element)
+Else {
+Top = stack top;
+Stack pop();
+sortedInsert();
+stack push(current element );
+}
+
+SOLN ->
+#include<bits/stdc++.h>
+using namespace std;
+void sortedInsert(stack<int> &st,int element){
+    if(st.empty() || element > st.top())
+        st.push(element);
+    else{
+        int top_element = st.top();
+        st.pop();
+        sortedInsert(st,element);
+        st.push(top_element);
+    }
+}
+void sortStack(stack<int> &st){
+    if(!st.empty()){
+        int top_element = st.top();
+        st.pop();
+        sortStack(st);
+        sortedInsert(st,top_element);
+    }
+}
+int main(){
+    stack<int> st;
+    int n;
+    cin>>n;
+    while (n--){
+        int x;
+        cin>>x;
+        st.push(x);
+    }
+    sortStack(st);
+    while(!st.empty()){
+        int top = st.top();
+        st.pop();
+        cout<<top<<endl;
+    }
+    return 0;
+}
