@@ -8,4 +8,9 @@ Some important questions for software interviews. Check out the following ones a
 4. Sort a stack - {recursion}, Special stack {simple implementation}
 5. Queue using 2 stacks & Stack using 2 queues - {Imp ques, see Yt video}
 6. Subarray with ZERO sum - {Prefix sum & Hashing, easy}
+7. Subarray with given sum - {Sliding Window approach}
+8. Kadane's algo & its variations - {Very IMP}
+9. Jump Game - {max_reach concept, easy}
+10. Maximum product subarray - {2 way KADANE, easy}
+11. Minimum number of jumps - {Tricky ques, {max_reach, steps, jumps}} - Must Look this!
 
