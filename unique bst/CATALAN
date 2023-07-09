@@ -1,4 +1,5 @@
 RECURSIVE:- O(EXPONENTIAL)
+
 #include<iostream> 
 using namespace std; 
 
@@ -25,6 +26,7 @@ int main()
 } 
 
 DYNAMIC PROGRAMMING:- O(N^2) & O(N)
+
 #include<iostream> 
 using namespace std; 
 
@@ -58,7 +60,9 @@ int main()
 	return 0; 
 } 
 
-BINOMIAL COEFFICIENT:- 0(N) & O(1)
+
+BINOMIAL COEFFICIENT:- 0(N) & O(1) - {OPTIMAL SOLUTION}
+
 // C++ program for nth Catalan Number 
 #include<iostream> 
 using namespace std; 
