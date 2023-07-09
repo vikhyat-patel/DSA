@@ -16,4 +16,6 @@ Some important questions for software interviews. Check out the following ones a
 12. Majority Element - {moore's voting algorithm}
 13. Find duplicates in the array - {a beautiful logic with constant space}
 14. Find Kth smallest element in an array - {priority_queue(max heap), must look}
+15. Peak Element - {a very beautiful concept of 'BS' with edge cases, must look}
+16. Minimize the heights - {a very Tricky ques, revise it GFG} 
 
