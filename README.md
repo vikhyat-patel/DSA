@@ -17,5 +17,8 @@ Some important questions for software interviews. Check out the following ones a
 13. Find duplicates in the array - {a beautiful logic with constant space}
 14. Find Kth smallest element in an array - {priority_queue(max heap), must look}
 15. Peak Element - {a very beautiful concept of 'BS' with edge cases, must look}
-16. Minimize the heights - {a very Tricky ques, revise it GFG} 
+16. Minimize the heights - {a very Tricky ques, revise it GFG}
+17. Count pairs with given sum - {use of 'Map' to keep the count of freq}
+18. Rotate an array by 'd' places - {use of 3 times reverse function)
+19. Minimum Platforms - {sorting arrival & departure, and 2 pointer approach, Must look}
 
