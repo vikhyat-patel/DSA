@@ -1,0 +1,28 @@
+//Function to find the minimum number of platforms required at the            // O(N*lOGN) & O(N) //
+    //railway station such that no train waits.
+    int findPlatform(int arr[], int dep[], int n)
+    {
+    	sort(arr, arr + n);
+    	sort(dep, dep + n);
+    	
+    	int p_need = 1;
+    	int min_platforms = 1;
+    	
+    	int i = 1;
+    	int j = 0;
+    	
+    	while(i < n && j < n){
+    	    if(arr[i] <= dep[j]){
+    	        p_need++;
+    	        i++;
+    	    }
+    	    else if(arr[i] > dep[j]){
+    	        p_need--;
+    	        j++;
+    	    }
+    	    
+    	    if(p_need > min_platforms)
+    	    min_platforms = p_need;
+    	}
+    	return min_platforms;
+    }
