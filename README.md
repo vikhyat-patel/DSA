@@ -23,5 +23,7 @@ Some important questions for software interviews. Check out the following ones a
 19. Minimum Platforms - {sorting arrival & departure, and 2 pointer approach, Must look}
 20. Stock Span Problem - {standard stack ques, use of stack<pair>, must look}
 21. DP on STOCKS - {very very IMP} - [atmost k transactions,, cooldown,, transaction fee,, valley peak] - Refer 'Leetcode' MUST DO!
-22. Maximum of all subarrays of size k - {'Sliding window' technique}
+22. Maximum of all subarrays of size k - {'Sliding window' technique, very very IMP & Tricky, must look, Gfg}
+23. Spirally traversing a matrix - {very tricky Implementation, frequently asked, must revise this, Gfg}
+
 
