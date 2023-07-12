@@ -24,6 +24,6 @@ Some important questions for software interviews. Check out the following ones a
 20. Stock Span Problem - {standard stack ques, use of stack<pair>, must look}
 21. DP on STOCKS - {very very IMP} - [atmost k transactions,, cooldown,, transaction fee,, valley peak] - Refer 'Leetcode' MUST DO!
 22. Maximum of all subarrays of size k - {'Sliding window' technique, very very IMP & Tricky, must look, Gfg}
-23. Spirally traversing a matrix - {very tricky Implementation, frequently asked, must revise this, Gfg}
+23. Spirally traversing a matrix - {very tricky Implementation, frequently asked, must revise this, Gfg} - (Top = 0, bottom = r - 1, left = 0, right = c - 1)
 
 
