@@ -27,5 +27,6 @@ Some important questions for software interviews. Check out the following ones a
 23. Spirally traversing a matrix - {very tricky Implementation, frequently asked, must revise this, Gfg} - (Top = 0, bottom = r - 1, left = 0, right = c - 1)
 24. Remove duplicate elements from sorted Array - {In place, 'TWO Pointer technique'}
 25. Intersection/ Union of arrays - {Hashing, unordered_set}
-26. (IMP) House Robber (I & II) Questions - {standard 'DP' problems, must look Leetcode}  
+26. (IMP) House Robber (I & II) Questions - {standard 'DP' problems, must look Leetcode}
+27. Print Kth smallest/largest, find kth smallest/largest - {Priority_queue(max/min Heap), look above Github file} 
 
