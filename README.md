@@ -28,5 +28,5 @@ Some important questions for software interviews. Check out the following ones a
 24. Remove duplicate elements from sorted Array - {In place, 'TWO Pointer technique'}
 25. Intersection/ Union of arrays - {Hashing, unordered_set}
 26. (IMP) House Robber (I & II) Questions - {standard 'DP' problems, must look Leetcode}
-27. Print Kth smallest/largest, find kth smallest/largest - {Priority_queue(max/min Heap), look above Github file} 
+27. 'Count Inversions' & Print Kth smallest/largest, find kth smallest/largest - {Priority_queue(max/min Heap), look above Github file} 
 
