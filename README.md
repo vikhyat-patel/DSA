@@ -15,7 +15,7 @@ Some important questions for software interviews. Check out the following ones a
 11. Minimum number of jumps - {Tricky ques, {max_reach, steps, jumps}} - Must Look this!
 12. Majority Element - {moore's voting algorithm}
 13. Find duplicates in the array - {a beautiful logic with constant space}
-14. Find Kth smallest element in an array - {priority_queue(max heap), must look}
+14. Find Kth smallest element in an array - {priority_queue(max heap), must look} - (similar for Kth largest)
 15. Peak Element - {a very beautiful concept of 'BS' with edge cases, must look}
 16. Minimize the heights - {a very Tricky ques, revise it GFG}
 17. Count pairs with given sum - {use of 'Map' to keep the count of freq}
@@ -25,5 +25,7 @@ Some important questions for software interviews. Check out the following ones a
 21. DP on STOCKS - {very very IMP} - [atmost k transactions,, cooldown,, transaction fee,, valley peak] - Refer 'Leetcode' MUST DO!
 22. Maximum of all subarrays of size k - {'Sliding window' technique, very very IMP & Tricky, must look, Gfg}
 23. Spirally traversing a matrix - {very tricky Implementation, frequently asked, must revise this, Gfg} - (Top = 0, bottom = r - 1, left = 0, right = c - 1)
-
+24. Remove duplicate elements from sorted Array - {In place, 'TWO Pointer technique'}
+25. Intersection/ Union of arrays - {Hashing, unordered_set}
+26. (IMP) House Robber (I & II) Questions - {standard 'DP' problems, must look Leetcode}  
 
