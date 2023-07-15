@@ -30,4 +30,7 @@ Some important questions for software interviews. Check out the following ones a
 26. (IMP) House Robber (I & II) Questions - {standard 'DP' problems, must look Leetcode}
 27. 'Count Inversions' & Print Kth smallest/largest, find kth smallest/largest - {Priority_queue(max/min Heap), look above Github file}
 28. House Robber, Jump Game & Pascals Triangle - {IMP Ques, refer Leetcode, must do}
+29. 'The Celebrity Problem' - {Two pointer approach, a = 0, b = n - 1, checking the candidate of celebrity}
+30. Max Sum without Adjacents - {A very very tricky Ques, use of variables (val 1, val 2) to find max_sum, must look}
+
 
