@@ -1,0 +1,36 @@
+Intuition ->
+1. Find the largest index k such that a[k] < a[k + 1]. If no such index exists, the permutation is the last permutation.
+2. Find the largest index l greater than k such that a[k] < a[l].
+3. Swap the value of a[k] with that of a[l].
+4. Reverse the sequence from a[k + 1] up to and including the final element a[n].
+
+// O(N) & O(1) soln..//
+
+vector<int> nextPermutation(int n, vector<int> arr){
+       int index = -1;  // to find the breakdown point
+        
+       for(int i = n - 2; i >= 0; i--){
+           if(arr[i] < arr[i + 1]){
+               index = i;
+               break;
+           }
+       } 
+       
+       // to check if the array is in it's last permutation..
+       if(index == -1){
+           reverse(arr.begin(), arr.end()); 
+           return arr;
+       }
+       
+       // swap the arr[index] with the just next greater element..
+       for(int i = n - 1; i > index; i--){
+           if(arr[i] > arr[index]){
+               swap(arr[index], arr[i]);
+               break;
+           }
+       }
+       
+       // reverse the array after index+1, to make it the smallest one..
+       reverse(arr.begin() + index+1, arr.end());
+       return arr;
+    }
