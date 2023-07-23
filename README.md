@@ -35,6 +35,7 @@ Some important questions for software interviews. Check out the following ones a
 31. Sliding Window 'subarray questions' - {subarray with given sum, smallest subarray with sum > X, count subarrays having product < k(IMP) } - Mostly questions follow the similar pattern, revise them they are frequently asked.
 32. {Smallest positive missing number(CI/swap), Missing & Repeating(IMP) - Mathematical soln,2eqns..(optimal), Next Permutation (very very imp)} - look out these problems.
 33. search element in rotated sorted array(I & II), Min element in rotated sorted array - {std. Binary Search problems - identifying the sorted halves & eliminating them} - must look all the variations.
-34. Activity selection problem - {Greedy approach, vector<pair>, sorting wrt endTime}, Job sequencing - {Tough, greedy is easy O(N^2) & O(N), but optimal is O(NlogN) & O(N)} 
+34. Activity selection problem - {Greedy approach, vector<pair>, sorting wrt endTime}, Job sequencing - {Tough, greedy is easy O(N^2) & O(N), but optimal is O(NlogN) & O(N)}
+35. Square root of a number & Nth root of a number - {Typical std. Binary Search problems, eliminating the halves, logN}
 
 
