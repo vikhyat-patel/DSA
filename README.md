@@ -34,5 +34,6 @@ Some important questions for software interviews. Check out the following ones a
 30. Max Sum without Adjacents - {A very very tricky Ques, use of variables-[val 1 = arr[0], val 2 = max(arr[0], arr[1])] to find the max_sum, corner cases, must look}
 31. Sliding Window 'subarray questions' - {subarray with given sum, smallest subarray with sum > X, count subarrays having product < k(IMP) } - Mostly questions follow the similar pattern, revise them they are frequently asked.
 32. {Smallest positive missing number(CI/swap), Missing & Repeating(IMP) - Mathematical soln,2eqns..(optimal), Next Permutation (very very imp)} - look out these problems.
+33. search element in rotated sorted array(I & II), Min element in rotated sorted array - {std. Binary Search problems - identifying the sorted halves & eliminating them} - must look all the variations.
 
 
