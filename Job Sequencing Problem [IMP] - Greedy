@@ -1,0 +1,54 @@
+// In this problem comparator function must be defined outside the class...Time complexity - O(N^2) & O(N) Space..
+
+bool cmp(Job a, Job b){
+    return (a.profit > b.profit);
+}
+
+class Solution 
+{
+    public:
+    //Function to find the maximum profit and the number of jobs done.
+    vector<int> JobScheduling(Job arr[], int n) 
+    { 
+        // sort the array in the descending order of profit
+        sort(arr, arr + n, cmp);
+        
+        int result[n]; // to store the order of index in which we'll do the jobs
+        bool slot[n];  // to check if the slot is available or not
+        
+        for(int i = 0; i < n; i++){
+            slot[i] = false;
+        }
+        // Iterating over all the jobs
+        for(int i = 0; i < n; i++){
+           // Find a free slot for this job (Note that we start from the last possible slot)
+            for(int j = min(n, arr[i].dead) - 1; j>=0; j--){
+                if(slot[j] == false){
+                   slot[j] = true;
+                   result[j] = i;
+                   break;
+                }
+            }
+       }
+        vector<int> ans;
+        int cnt = 0;
+        int prof = 0;
+        
+        for(int i = 0; i < n; i++){
+            if(slot[i]){
+                cnt++;
+                prof += arr[result[i]].profit;
+            }
+        }
+        
+        ans.push_back(cnt);
+        ans.push_back(prof);
+        return ans;
+    } 
+}
+                                  //// We can also print the Sequence in which the jobs were performed..
+  
+                                    for (int i = 0; i < n; i++) {
+                                        if (slot[i])
+                                            cout << arr[result[i]].id << " ";
+                                    }
