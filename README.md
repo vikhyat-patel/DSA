@@ -38,5 +38,6 @@ Some important questions for software interviews. Check out the following ones a
 34. Activity selection problem - {Greedy approach, vector<pair>, sorting wrt endTime}, Job sequencing - {Tough, greedy is easy O(N^2) & O(N), but optimal is O(NlogN) & O(N)}
 35. Square root of a number & Nth root of a number - {Typical std. Binary Search problems, eliminating the halves, logN}
 36. Koko Eating Bananas, Minimum Number of Days to Make m Bouquets, Smallest Divisor Given a Threshold - {All are std. 'BS' Problems, which work on eliminating the halves and searching the answer in a defined search space which we have to identify}
+37. ALL std. 'BINARY SEARCH' ques (very IMP), revise it from 'Striver's Sheet' BS problems..You'll get the concept.
 
 
