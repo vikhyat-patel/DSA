@@ -2,7 +2,7 @@
 
 Some important questions for software interviews. Check out the following ones also!
 
-1. Search in a matrix - {Two pointer}
+1. Search in a matrix - There are 2 variations of this problem, one in GFG - row & col sorted{Two pointer} & other in Leetcode, here we apply some tricks to solve it in O(logN + logM), both questions are very important must look.
 2. Number of 1 Bits - {very very interesting, must look}
 3. Parenthesis checker - {stack}
 4. Sort a stack - {recursion}, Special stack {simple implementation}
@@ -39,5 +39,6 @@ Some important questions for software interviews. Check out the following ones a
 35. Square root of a number & Nth root of a number - {Typical std. Binary Search problems, eliminating the halves, logN}
 36. Koko Eating Bananas, Minimum Number of Days to Make m Bouquets, Smallest Divisor Given a Threshold - {All are std. 'BS' Problems, which work on eliminating the halves and searching the answer in a defined search space which we have to identify}
 37. ALL std. 'BINARY SEARCH' ques (very IMP), revise it from 'Striver's Sheet' BS problems..You'll get the concept.
+38. {Overlapping Intervals, Police & Thief, Huffman Encoding} - They are std. Greedy problems and they are important also. Must revise them, refer gfg for the same.
 
 
