@@ -1,0 +1,30 @@
+Optimal soln...{O(2n) & O(1)}.. but start with the brute force solution..
+// This 2 Pointer technique is valid only for the given (+ve) numbers in the array.
+
+//Function to find a continuous sub-array which adds up to a given number.
+    vector<int> subarraySum(vector<int>arr, int n, long long k)
+    {
+      int left = 0, right = 0;  // 2 pointers
+      long long sum = arr[0];
+      
+      if(k == 0) return {-1};   // base case
+
+      while (right < n) {
+        // if sum > k, reduce the subarray from left
+        // until sum becomes less or equal to k:
+        while (left <= right && sum > k) {
+            sum -= arr[left];
+            left++;
+        }
+
+        // we can also use this step to find the {Longest Sub-Array with Sum K}
+        if (sum == k) {
+            return {left + 1, right + 1};
+        }
+
+        // Move forward the right pointer:
+        right++;
+        if (right < n) sum += arr[right];
+    }
+     return {-1};
+    }
