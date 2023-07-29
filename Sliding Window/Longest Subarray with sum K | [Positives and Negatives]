@@ -1,1 +1,32 @@
+// Optimal soln...O(n) & O(n) - Hashing, but try to start with the brute force first...
+In case of Negatives, we always try to do the Hashing..
 
+int getLongestSubarray(int arr[], int n, int k) 
+    { 
+        int max_len = 0;
+        unordered_map<long long, int> mp;
+        long long curr_sum = 0;
+        
+        for(int i = 0; i < n; i++){
+            //calculate the prefix sum till index i:
+            curr_sum += arr[i];
+            if(curr_sum == k){
+                max_len = max(max_len, i + 1);
+            }
+            
+            // calculate the sum of remaining part i.e. x-k:
+            long long rem = curr_sum - k;
+            
+            //Calculate the length and update maxLen:
+            if(mp.find(rem) != mp.end()){
+                int len = i - mp[rem];
+                max_len = max(max_len, len);
+            }
+            
+            // if this curr_sum is not seen before, we need to store the 1st index to get the max_len..
+            if(mp.find(curr_sum) == mp.end()){
+                mp[curr_sum] = i;
+            }
+        }
+        return max_len;
+    } 
