@@ -1,0 +1,46 @@
+Optimal soln(Hash)...O(n) & O(n), but start with the brute force..
+Always, if the elements are positive + negatives then the approach would be the 'Hashing'..
+
+//Function to check whether there is a subarray present with 0-sum or not.
+    bool subArrayExists(int arr[], int n)
+    {
+        unordered_set<int> st;  // for Hashing
+        int curr_sum = 0;
+        for(int i=0;i<n;i++){
+            curr_sum += arr[i];
+            if(curr_sum == 0){
+                return true;
+            }
+            if(st.find(curr_sum) != st.end()){
+                return true; 
+            }
+            st.insert(curr_sum);
+        }
+        return false;
+    }
+
+
+
+Optimal soln(Hash)...O(n) & O(n), but start with the brute force..
+
+//Function to check whether there is a subarray present with given sum 'K'
+    bool subArrayExists(int arr[], int n, int k)
+    {
+        unordered_set<int> st;   // for Hashing
+        int curr_sum = 0;
+        
+        for(int i = 0; i < n; i++){
+            
+            curr_sum += arr[i];
+            if(curr_sum == k){
+                return true;
+            }
+            
+            int rem = curr_sum - k;
+            if(st.find(rem) != st.end()){
+                return true; 
+            }
+            st.insert(curr_sum);
+        }
+        return false;
+    }
