@@ -1,0 +1,40 @@
+Optimal solution - O(N) & O(1), but try explaining the brute soln at first then jump to this optimal one..
+Brute soln will be to check from every petrol pump from start, and return the first valid from which we can make a circular tour..will work in (N^2)  
+
+
+struct petrolPump
+{
+    int petrol;
+    int distance;
+};
+
+    //Function to find starting point where the truck can start to get through the complete circle without exhausting its petrol in between..
+
+    int tour(petrolPump p[],int n)
+    {
+        int petrol_sum = 0;
+        int distance_sum = 0;
+        for(int i = 0; i < n; i++){
+            petrol_sum += p[i].petrol;
+            distance_sum += p[i].distance;
+        }
+        if(petrol_sum < distance_sum){        // base case
+            return -1;
+        }
+        
+        int ptr = 0;
+        int i = 0;
+        int carry_petrol = 0;
+        
+        while(i < n){
+            
+           carry_petrol += p[i].petrol - p[i].distance;
+           
+           if(carry_petrol < 0){
+               ptr = i + 1;
+               carry_petrol = 0;
+           }
+           i++;
+        }
+        return ptr;
+    }
