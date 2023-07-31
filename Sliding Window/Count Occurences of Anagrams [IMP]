@@ -1,0 +1,46 @@
+OPTIMAL SOLUTION -> 
+
+Time Complexity: O(N)
+Auxiliary Space: O(26) or O(256)
+
+// Given a word pat and a text txt. Return the count of the occurrences of anagrams of the word in the text.
+
+int search(string pat, string txt) {
+	    
+	    int n = pat.size();
+	    int m = txt.size();
+	    
+	    if(n > m) return 0;    // base case
+	    
+	    int cnt = 0;
+	    
+	    vector<int> freq_pat(26, 0);
+	    vector<int> freq_txt(26, 0);
+	    
+	    
+	    for(int i = 0; i < pat.size(); i++){
+	        freq_pat[pat[i] - 'a']++;
+	    }
+	    
+	    for(int i = 0; i < pat.size(); i++){
+	        freq_txt[txt[i] - 'a']++;
+	    }
+	    
+	    if(freq_pat == freq_txt){
+	            cnt++;
+	     }
+	    
+	    for(int i = pat.size(); i < txt.size(); i++){
+	        
+	        freq_txt[txt[i - n] - 'a']--;
+	        
+	        freq_txt[txt[i] - 'a']++;
+	        
+	        if(freq_pat == freq_txt){
+	            cnt++;
+	        }
+	        
+	    }
+	    
+	    return cnt;
+	}
