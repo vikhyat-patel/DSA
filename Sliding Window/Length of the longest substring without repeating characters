@@ -1,0 +1,50 @@
+/// Brute force solution - O(N^2) & O(1) [treat the vector as const space]
+
+class Solution{
+    public:
+    int longestUniqueSubsttr(string s){
+        int max_len = 0;
+        
+        for(int i = 0; i < s.size(); i++){
+            
+            vector<bool> vis(26, false);   // if the string contains digits, symbols and all, we can initialise as [ vector<bool> vis(256, false) ];
+            
+            for(int j = i; j < s.size(); j++){
+                if(vis[s[j] - 'a'] == true){
+                    break;
+                }
+                else{
+                    
+                   max_len = max(max_len, j - i + 1); 
+                   vis[s[j] - 'a'] = true;
+                }
+            }
+        }
+        return max_len;
+    }
+};
+
+
+/// Optimal solution - O(N) & O(1) .... Concept of [SLw + Hash]
+
+class Solution{
+    public:
+    int longestUniqueSubsttr(string s){
+        
+        int max_len = 0;
+        vector<int> prev(26, -1);      // if the string contains digits, symbols and all, we can initialise as [ vector<int> prev(256, -1) ];
+        int i = 0;
+        
+        for(int j = 0; j < s.size(); j++){
+            
+            i = max(i, prev[s[j] - 'a'] + 1);    // checks the ptr from where our window should begin..
+            
+            int max_band = j - i + 1;
+            max_len = max(max_len, max_band);
+            
+            prev[s[j] - 'a'] = j;       // storing the last index of the s[j]..
+        }
+        
+        return max_len;
+    }
+};
