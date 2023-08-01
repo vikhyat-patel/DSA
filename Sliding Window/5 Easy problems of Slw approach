@@ -1,0 +1,13 @@
+1. Count Distinct elements in every window [simple unordered_map concept SLw concept]
+
+2. Max Sum Subarray of size K [simple o(n) & o(1) solution]
+
+3. Largest subarray of 0's and 1's [simple unordered_map + SLw concept, Convert all the 0's to -1, thus the problem reduces to find the length of largest subarray giving sum 0]
+
+4. Smallest window containing 0, 1 and 2 [simple, unordered_map concept, o(n) & o(n) concept with use of SLw]
+
+5. Maximum sum of subarray less than or equal to x [simple o(n) & o(1) solution, with window slide 2 ptrs]
+
+
+
+For all of these questions refer Gfg..
