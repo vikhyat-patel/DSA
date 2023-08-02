@@ -40,5 +40,6 @@ Some important questions for software interviews. Check out the following ones a
 36. Koko Eating Bananas, Minimum Number of Days to Make m Bouquets, Smallest Divisor Given a Threshold - {All are std. 'BS' Problems, which work on eliminating the halves and searching the answer in a defined search space which we have to identify}
 37. ALL std. 'BINARY SEARCH' ques (very IMP), revise it from 'Striver's Sheet' BS problems..You'll get the concept.
 38. {Overlapping Intervals, Police & Thief, Huffman Encoding} - They are std. Greedy problems and they are important also. Must revise them, refer gfg for the same.
+39. To find Pow(x,n) - {we can do linear but optimal is Binary Exponentiation - Log(N), similar question is 'count good numbers' on leetcode where we have applied the same logic}
 
 
