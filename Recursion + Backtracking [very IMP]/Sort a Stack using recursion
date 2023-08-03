@@ -1,0 +1,30 @@
+Time - O(N^2) & Space - O(N) recursive...
+
+// It will make the sorted insert of elements back into stack & hence sorting it..
+void sortedInsert(stack<int> &s, int element){
+    
+    if(s.empty() || element > s.top()){
+        s.push(element);
+    }
+    
+    else{
+        int top_element = s.top();
+        s.pop();
+        sortedInsert(s, element);
+        s.push(top_element);
+    }
+    
+}
+
+/* The below method sorts the stack s 
+you are required to complete the below method */
+void SortedStack :: sort()
+{
+    // If the stack is not empty..we recursively call the fnctn & then make the sorted insert of the elements back into it..
+    if(!s.empty()){
+        int top = s.top();
+        s.pop();
+        sort();
+        sortedInsert(s, top);
+    }
+}
