@@ -1,0 +1,47 @@
+2 Methods to do this problem ... 1st Method is 'Bit manipulation' O(n*2^n) & O(n), 2nd Method is using 'recursion' O(2^n) & O(n)... 
+
+vector<vector<int>> subsets(vector<int>& nums) {
+        int n = nums.size();
+        vector<vector<int>> ans;
+        for(int num = 0; num < (1 << n); num++){
+            vector<int> v;
+            for(int i = 0; i < n; i++){
+                if(num & (1 << i)){
+                    v.push_back(nums[i]);
+                }
+            }
+            ans.push_back(v);
+        }
+        return ans;
+    }
+
+// Here, we generate all the subsets using the Bit technique..
+
+
+Optimal soln - Recursion
+
+class Solution
+{
+    private:
+    void helper(vector<int> &arr, int idx, vector<int> &nums,  vector<vector<int>> &ans){
+        if(idx == arr.size()){
+            ans.push_back(nums);
+            return;
+        }
+        helper(arr, idx + 1, nums, ans);  // we didn't included the element at first
+        nums.push_back(arr[idx]);
+        helper(arr, idx + 1, nums, ans);  // now we included the element
+
+        nums.pop_back();   // exclude the arr[idx] from subset -> backtracking
+    }
+    public:
+    vector<vector<int>> subsets(vector<int>& arr)
+    {
+       vector<vector<int>> ans;
+       vector<int> nums;    
+       helper(arr, 0, nums, ans);
+       sort(ans.begin(), ans.end());
+       return ans;
+    }
+};
+
