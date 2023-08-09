@@ -41,5 +41,6 @@ Some important questions for software interviews. Check out the following ones a
 37. ALL std. 'BINARY SEARCH' ques (very IMP), revise it from 'Striver's Sheet' BS problems..You'll get the concept.
 38. {Overlapping Intervals, Police & Thief, Huffman Encoding} - They are std. Greedy problems and they are important also. Must revise them, refer gfg for the same.
 39. To find Pow(x,n) - {we can do linear but optimal is Binary Exponentiation - Log(N), similar question is 'count good numbers' on leetcode where we have applied the same logic}
+40. Sieve of Eratosthenes - {creating Blackbox (bool type globally)} - IMP CONCEPT {to check how many prime numbers are upto 'n' in O(n) complexity, also we can figure out if the given number is prime or not}
 
 
