@@ -1,0 +1,82 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+void build(vector<int> &nums, int idx, int low, int high, vector<int> &seg){
+    
+    if(low == high){
+        seg[idx] = nums[low];
+        return;
+    }
+    
+    int mid = (low + high)/2;
+    
+    build(nums, 2*idx + 1, low, mid, seg);
+    
+    build(nums, 2*idx + 2, mid + 1, high, seg);
+    
+    seg[idx] = seg[2*idx + 1] ^ seg[2*idx + 2];
+    
+}
+ 
+int query(int idx, int low, int high, int a, int b, vector<int> &seg){
+    
+    if(low >= a && high <= b){
+        return seg[idx];
+    }
+    
+    if(high < a || low > b){
+        return 0;
+    }
+    
+    int mid = (low + high)/2;
+    
+    int left  = query(2*idx + 1, low, mid, a, b, seg);
+    int right = query(2*idx + 2, mid + 1, high, a, b, seg);
+    
+    return (left ^ right);
+}
+ 
+int getXor(vector<int>&nums, int a, int b){
+        int n = nums.size();
+        vector<int> seg(4*n);
+        
+        build(nums, 0, 0, n - 1, seg);
+        
+        int res = query(0, 0, n - 1, a, b, seg);
+        return res;
+}
+ 
+int main(){
+    int n, q;
+    cin>>n>>q;
+    vector<int> arr;
+    for(int i = 0; i < n; i++){
+        int x;
+        cin>>x;
+        arr.push_back(x);
+    }
+    while(q--){
+        int a, b;
+        cin>>a>>b;
+        cout<<getXor(arr, a - 1, b - 1)<<endl;
+    }
+}
+
+
+We can also do this question in linear time using the 'Prefix array'..
+
+int main(){
+    int n, q;
+    cin>>n>>q;
+    vector<int> a(n+1, 0);
+    for(int i = 0; i < n; i++){
+        int x;
+        cin>>x;
+        a[i+1]=a[i]^x;
+    }
+    while(q--){
+        int l,r;
+        cin>>l>>r;
+        cout<<(a[r]^a[l-1])<<"\n";
+    }
+}
