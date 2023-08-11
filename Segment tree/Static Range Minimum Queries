@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+ 
+void build(vector<ll> &nums, ll idx, ll low, ll high, vector<ll> &seg)
+{
+ 
+    if (low == high)
+    {
+        seg[idx] = nums[low];
+        return;
+    }
+ 
+    ll mid = (low + high) / 2;
+ 
+    build(nums, 2 * idx + 1, low, mid, seg);
+ 
+    build(nums, 2 * idx + 2, mid + 1, high, seg);
+ 
+    seg[idx] = min(seg[2 * idx + 1], seg[2 * idx + 2]);
+}
+ 
+ll query(ll idx, ll low, ll high, ll a, ll b, vector<ll> &seg)
+{
+ 
+    if (low >= a && high <= b)
+    {
+        return seg[idx];
+    }
+ 
+    if (high < a || low > b)
+    {
+        return 1e9;
+    }
+ 
+    ll mid = (low + high) / 2;
+ 
+    ll left = query(2 * idx + 1, low, mid, a, b, seg);
+    ll right = query(2 * idx + 2, mid + 1, high, a, b, seg);
+ 
+    return min(left, right);
+}
+ 
+ll getMin(vector<ll> &nums, ll a, ll b, vector<ll> &seg)
+{
+    ll n = nums.size();
+ 
+    ll res = query(0, 0, n - 1, a, b, seg);
+    return res;
+}
+ 
+int main()
+{
+    ll n, q;
+    cin >> n >> q;
+    vector<ll> arr;
+    for (ll i = 0; i < n; i++)
+    {
+        ll x;
+        cin >> x;
+        arr.push_back(x);
+    }
+    
+    vector<ll> seg(4 * n);
+    build(arr, 0, 0, n - 1, seg);
+    
+    while (q--)
+    {
+        ll a, b;
+        cin >> a >> b;
+        ll x = getMin(arr, a - 1, b - 1, seg);
+        cout << x << endl;
+    }
+    return 0;
+}
