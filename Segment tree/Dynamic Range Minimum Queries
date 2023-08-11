@@ -44,7 +44,7 @@ ll getMin(vector<ll> &nums, ll a, ll b, vector<ll> &seg){
         return res;
 }
  
-void update_segtree(ll idx, ll low, ll high, vector<ll> &seg, ll node, ll value){
+void value_update_segtree(ll idx, ll low, ll high, vector<ll> &seg, ll node, ll value){
     
     if(low == high){
         seg[idx] = value;
@@ -54,9 +54,9 @@ void update_segtree(ll idx, ll low, ll high, vector<ll> &seg, ll node, ll value)
     ll mid = (low + high)/2;
     
     if(node >= low && node <= mid)
-    update_segtree(2*idx + 1, low, mid, seg, node, value);
+    value_update_segtree(2*idx + 1, low, mid, seg, node, value);
     else
-    update_segtree(2*idx + 2, mid + 1, high, seg, node, value);
+    value_update_segtree(2*idx + 2, mid + 1, high, seg, node, value);
     
     seg[idx] = min(seg[2*idx + 1], seg[2*idx + 2]);
     
@@ -79,7 +79,7 @@ int main(){
         ll val, a, b;
         cin>>val>>a>>b;
         if(val == 1){
-            update_segtree(0, 0, n - 1, seg, a - 1, b);
+            value_update_segtree(0, 0, n - 1, seg, a - 1, b);
         }
         else{
             ll res = getMin(arr, a - 1, b - 1, seg);
