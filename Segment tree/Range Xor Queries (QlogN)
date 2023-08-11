@@ -38,9 +38,6 @@ int query(int idx, int low, int high, int a, int b, vector<int> &seg){
  
 int getXor(vector<int>&nums, int a, int b){
         int n = nums.size();
-        vector<int> seg(4*n);
-        
-        build(nums, 0, 0, n - 1, seg);
         
         int res = query(0, 0, n - 1, a, b, seg);
         return res;
@@ -55,10 +52,15 @@ int main(){
         cin>>x;
         arr.push_back(x);
     }
+ 
+    vector<int> seg(4*n);
+    build(arr, 0, 0, n - 1, seg);
+
     while(q--){
         int a, b;
         cin>>a>>b;
-        cout<<getXor(arr, a - 1, b - 1)<<endl;
+        int res = getXor(arr, a - 1, b - 1);
+        cout<<res<<endl;
     }
 }
 
