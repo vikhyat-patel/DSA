@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+ 
+void build(vector<ll> &nums, ll idx, ll low, ll high, vector<ll> &seg){
+    
+    if(low == high){
+        seg[idx] = nums[low];
+        return;
+    }
+    
+    ll mid = (low + high)/2;
+    
+    build(nums, 2*idx + 1, low, mid, seg);
+    
+    build(nums, 2*idx + 2, mid + 1, high, seg);
+    
+    seg[idx] = seg[2*idx + 1] + seg[2*idx + 2];
+    
+}
+ 
+ll query(ll idx, ll low, ll high, ll a, ll b, vector<ll> &seg){
+    
+    if(low >= a && high <= b){
+        return seg[idx];
+    }
+    
+    if(high < a || low > b){
+        return 0;
+    }
+    
+    ll mid = (low + high)/2;
+    
+    ll left  = query(2*idx + 1, low, mid, a, b, seg);
+    ll right = query(2*idx + 2, mid + 1, high, a, b, seg);
+    
+    return (left + right);
+}
+ 
+ll getSum(vector<ll> &nums, ll a, ll b, vector<ll> &seg){
+        ll n = nums.size();
+        
+        ll res = query(0, 0, n - 1, a, b, seg);
+        return res;
+}
+ 
+void value_increase_update_segtree(ll idx, ll low, ll high, vector<ll> &seg, ll node, ll value){
+    
+    if(low == high){
+        seg[idx] += value;
+        return;
+    }
+    
+    ll mid = (low + high)/2;
+    
+    if(node >= low && node <= mid)
+    value_increase_update_segtree(2*idx + 1, low, mid, seg, node, value);
+    else
+    value_increase_update_segtree(2*idx + 2, mid + 1, high, seg, node, value);
+    
+    seg[idx] = seg[2*idx + 1] + seg[2*idx + 2];
+    
+}
+ 
+int main(){
+    ll n, q;
+    cin>>n>>q;
+    vector<ll> arr;
+    for(ll i = 0; i < n; i++){
+        ll x;
+        cin>>x;
+        arr.push_back(x);
+    }
+ 
+    vector<ll> seg(4*n);
+    build(arr, 0, 0, n - 1, seg);
+ 
+    while(q--){
+        ll val, a, b;
+        cin>>val>>a>>b;
+        if(val == 1){
+            value_increase_update_segtree(0, 0, n - 1, seg, a - 1, b);
+        }
+        else{
+            ll res = getSum(arr, a - 1, b - 1, seg);
+            cout<<res<<endl;
+        }
+    }
+}
