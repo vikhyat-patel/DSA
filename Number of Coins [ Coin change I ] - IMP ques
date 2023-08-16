@@ -1,7 +1,6 @@
-class Solution{
-
-	public:
-	int helper(int sum, int idx, int coins[], int n, vector<vector<int>> &dp)
+class Solution {
+public:
+int helper(int sum, int idx, vector<int> &coins, int n, vector<vector<int>> &dp)
 	{
 	    if(sum < 0 || idx == n)
 	        return 1e8;
@@ -18,16 +17,17 @@ class Solution{
 	    
 	    return dp[idx][sum] = min(pick, not_pick);
 	}
-	
-	int minCoins(int coins[], int M, int V) 
-	{ 
-	    vector<vector<int>>dp(M + 1, vector<int> (V + 1, -1));
+
+      int coinChange(vector<int>& coins, int amount) {
+
+      int n = coins.size();
+
+      vector<vector<int>>dp(n + 1, vector<int> (amount + 1, -1));
 	    
-	    int ans = helper(V, 0, coins, M, dp);
+	    int ans = helper(amount, 0, coins, n, dp);
 	    
 	    if(ans >= 1e8) return -1;
 	    
 	    return ans;
-	}  
-	  
+    }
 };
