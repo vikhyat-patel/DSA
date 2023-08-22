@@ -45,6 +45,7 @@ Some important questions for software interviews. Check out the following ones a
 41. SOME IMPORTANT 'DP' QUESTIONS ->
 -> Palindromic Partition II(fewest cuts), MCM [IMP] (1, n - 1), Printing LIS (use of hash), Egg Drop [Tough] - refer gfg..
 -> Maximum path sum in matrix, Total Decoding Messages, Rod cutting -> std. 'dp' problems must look!
+42. Reach a number on a infinite number line -> find min steps... {a very tricky ques with mathematical approach, must look}
 
 
 
