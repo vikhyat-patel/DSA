@@ -48,6 +48,7 @@ Some important questions for software interviews. Check out the following ones a
 42. Reach a number on a infinite number line -> find min steps... {a very tricky ques with mathematical approach, must look}
 43. {Wildcard Pattern matching, Boolean Parenthesization, Count Palindromic Subsequences} - All are very Imp questions of DP, must revise them..gfg
 44. {Find the string in grid,, Word Search,, & Word Boggle} - all are important questions of DFS in a matrix with slight tweaks in their solutions & approach..
+45. Number of Islands [Online queries] - IMP DSU concept(hard) - Dynamic graphs,,,always Dsu...Must refer gfg.
  
 
 , 
