@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int prime[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
+int dp[10][2][80];     // dp array for {pos, tight, sum}
+
+
+bool check(int n){          // it checks, if the sum of digits lead up to a prime number..
+    for(int i = 0; i < 25; i++){
+    	if(prime[i] == n)
+    		return true;
+    }
+    return false;
+}
+
+int ftn(string str, int pos, int tight, int sum){
+    if(pos == str.size()){
+    	if(check(sum)){
+    		return 1;
+    	}
+    	return 0;
+    }
+
+    if(dp[pos][tight][sum] != -1) return dp[pos][tight][sum];
+
+    if(tight == 1){
+    	int res = 0;
+        for(int i = 0; i <= str[pos] - '0'; i++){
+        	if(i == str[pos] - '0')
+        		res += ftn(str, pos + 1, 1, sum + i);
+        	else
+                res += ftn(str, pos + 1, 0, sum + i);
+        }
+        return dp[pos][tight][sum] = res;
+    }
+    else{
+        int res = 0;
+        for(int i = 0; i <= 9; i++){
+            res += ftn(str, pos + 1, 0, sum + i);
+        }
+        return dp[pos][tight][sum] = res;
+    }
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+       int l, r;
+       cin>>l>>r;
+       l = l - 1;    // since [ftn(r) - ftn(l - 1)] = ans of range l to r
+
+       string s1 = to_string(r);    // we convert int to string for easy access..
+       string s2 = to_string(l);
+       
+       memset(dp, -1, sizeof(dp));
+       int ans1 = ftn(s1, 0, 1, 0);
+       memset(dp, -1, sizeof(dp));   // since we have to use the dp table again..
+       int ans2 = ftn(s2, 0, 1, 0);
+
+       cout<<ans1 - ans2<<endl;
+	}
+}
