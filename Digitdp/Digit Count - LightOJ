@@ -1,0 +1,41 @@
+Given a set of digits S, and an integer n, you have to find how many n-digit integers are there, which contain digits that belong to S and the difference between any two adjacent digits is not more than two.
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int dp[12][12];   // states - {pos, prev}
+
+int ftn(int n, vector<int> s, int pos, int prev){
+    
+    if(pos == n){
+        return 1;
+    }
+    
+    if(dp[pos][prev] != -1) return dp[pos][prev];
+
+    int res = 0;
+    for(int i = 0; i < s.size(); i++){
+        if(prev == 0 || (abs(s[i] - prev) <= 2))
+        	res += ftn(n, s, pos + 1, s[i]);
+    }
+
+    return dp[pos][prev] = res;
+}
+
+int main(){
+	int t;
+	cin>>t;
+	for(int test = 1; test <= t; test++){
+       int m, n;
+       cin>>m>>n;
+       vector<int> s(m);
+       for(int i = 0; i < m; i++){
+           cin>>s[i];
+       }
+
+       memset(dp, -1, sizeof(dp));
+       
+       cout<<"Case"<<" "<<test<<":"<<" "<<ftn(n, s, 0, 0)<<endl;
+	}
+}
