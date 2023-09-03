@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+ll dp[20][2][180];
+
+ll ftn(string str, ll pos, ll tight, ll sum){
+    if(pos == str.size()){
+        return sum;
+    }
+
+    if(dp[pos][tight][sum] != -1) return dp[pos][tight][sum];
+
+    if(tight == 1){
+    	ll res = 0;
+    	for(int i = 0; i <= str[pos] - '0'; i++){
+    		if(i == str[pos] - '0')
+    			res += ftn(str, pos + 1, 1, sum + i);
+    		else
+    			res += ftn(str, pos + 1, 0, sum + i);
+    	}
+    	return dp[pos][tight][sum] = res;
+    }
+    else{
+    	ll res = 0;
+    	for(int i = 0; i <= 9; i++){
+    		res += ftn(str, pos + 1, 0, sum + i);
+    	}
+    	return dp[pos][tight][sum] = res;
+    }
+}
+
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+       ll l, r;
+       cin>>l>>r;
+       l = l - 1;
+
+       string s1 = to_string(r);
+       string s2 = to_string(l);
+
+       memset(dp, -1, sizeof(dp));
+       ll ans1 = ftn(s1, 0, 1, 0);
+       memset(dp, -1, sizeof(dp));
+       ll ans2 = ftn(s2, 0, 1, 0);
+
+       cout<<ans1 - ans2<<endl;
+	}
+}
