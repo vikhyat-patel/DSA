@@ -1,0 +1,40 @@
+// simple Bfs solution...
+
+class Solution{
+public:
+    int minThrow(int N, int arr[]){
+        int move[31];
+        for(int i = 1; i <= 30; i++){
+            move[i] = -1;
+        }
+        
+        for(int i = 0; i < 2 * N; i += 2){
+            move[arr[i]] = arr[i + 1]; 
+        }
+        
+        int vis[31] = {false};
+        
+        queue<pair<int, int>> q;
+        q.push({1, 0});
+        vis[1] = 1;
+        
+        while(!q.empty()){
+            int node = q.front().first;
+            int moves = q.front().second;
+            q.pop();
+            
+            if(node == 30) return moves;
+            
+            for(int i = node + 1; i <= min(node + 6, 30); i++){
+                if(!vis[i]){
+                    vis[i] = 1;
+                    if(move[i] != -1)
+                    q.push({move[i], moves + 1});
+                    else
+                    q.push({i, moves + 1});
+                }
+            }
+        }
+        return -1;
+    }
+};
